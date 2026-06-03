@@ -1,5 +1,4 @@
 # secrets — never publish
-.env
 
 # build tooling & artifacts
 tools/
@@ -13,3 +12,5 @@ __pycache__/
 
 # unrelated local folders
 chatbot-demos/
+config.bat
+node_modules

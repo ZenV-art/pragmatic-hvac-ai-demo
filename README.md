@@ -11,6 +11,39 @@ Everything you need to run the appointment. Two files, no installs, works on you
 
 ---
 
+## 📧 To SEND in an email (recorded, real AI voice)
+
+The call is now pre-rendered with a natural **ElevenLabs** voice — it sounds the same on every device (no robotic browser voice).
+
+| Deliverable | Where |
+|---|---|
+| **Live interactive link** (paste in the email) | **https://zenv-art.github.io/pragmatic-hvac-ai-demo/** |
+| **MP4 video** (attach, or send on WhatsApp) | `video/pragmatic-hvac-ai-demo.mp4` (3.2 MB, portrait, 88s) |
+| GitHub repo (public) | https://github.com/ZenV-art/pragmatic-hvac-ai-demo |
+
+**Ready-to-send email:**
+> Subject: Here's your front desk answering a call you'd normally miss
+>
+> Hi [Name], rather than tell you what an AI receptionist does, I recorded one. This is *Maya* handling a 9 PM AC emergency for a business like yours — she calms the customer, flags the priority, captures every detail and books the technician in 90 seconds. 30-second listen 👇
+> 🔊 **https://zenv-art.github.io/pragmatic-hvac-ai-demo/**
+> (Video attached too.) Worth a quick call to set one up on your line?
+
+### 🎙️ Want an authentic Indian accent for Maya?
+The current voice is a warm, neutral professional one. To swap in an Indian-accented voice:
+1. In ElevenLabs → **Voice Library**, add an Indian voice you like (e.g. search "Indian"), open it, copy its **Voice ID**.
+2. Add to `.env`: `MAYA_VOICE_ID=...` and optionally `CALLER_VOICE_ID=...`
+3. Re-run: `python tools/generate_audio.py` then `node tools/build_video.js`, and `git add -A && git commit -m "new voice" && git push` to update the live link.
+
+### 🔁 Regenerate / rebuild commands
+- Re-make audio: `python tools/generate_audio.py`
+- Re-make MP4: `node tools/build_video.js`  (needs the local server + Chrome debug port running)
+- Update live link: `git add -A && git commit -m "update" && git push`
+
+> 🔐 Your ElevenLabs key lives only in `.env` (git-ignored — **not** published). Since it was shared in chat, consider rotating it in the ElevenLabs dashboard when convenient.
+> 🗑️ To take the public demo down: `gh repo delete ZenV-art/pragmatic-hvac-ai-demo` (or make it private in repo settings).
+
+---
+
 ## ▶ How to run (60 seconds before the meeting)
 
 1. **Use Google Chrome** (or Edge). Double-click **`presentation.html`** to start the deck.

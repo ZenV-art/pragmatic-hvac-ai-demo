@@ -17,9 +17,12 @@ The call is now pre-rendered with a natural **ElevenLabs** voice — it sounds t
 
 | Deliverable | Where |
 |---|---|
-| **Live interactive link** (paste in the email) | **https://zenv-art.github.io/pragmatic-hvac-ai-demo/** |
-| **MP4 video** (attach, or send on WhatsApp) | `video/pragmatic-hvac-ai-demo.mp4` (3.2 MB, portrait, 88s) |
+| **Live demo — one link, EN + हिंदी toggle** | **https://zenv-art.github.io/pragmatic-hvac-ai-demo/** |
+| **MP4 — English** (attach / WhatsApp) | `video/pragmatic-hvac-ai-demo.mp4` (3.2 MB, portrait, 88s) |
+| **MP4 — Hindi** (attach / WhatsApp) | `video/pragmatic-hvac-ai-demo-hindi.mp4` (3.4 MB, portrait, 99s) |
 | GitHub repo (public) | https://github.com/ZenV-art/pragmatic-hvac-ai-demo |
+
+The live link is a **single minimal page — just the demo** — with an **EN | हिंदी** toggle in the top-right that swaps the voice, transcript and labels in place. Send the one link to any prospect; they pick the language. (Attach the matching MP4 if you also want a video.)
 
 **Ready-to-send email:**
 > Subject: Here's your front desk answering a call you'd normally miss
@@ -35,9 +38,12 @@ The current voice is a warm, neutral professional one. To swap in an Indian-acce
 3. Re-run: `python tools/generate_audio.py` then `node tools/build_video.js`, and `git add -A && git commit -m "new voice" && git push` to update the live link.
 
 ### 🔁 Regenerate / rebuild commands
-- Re-make audio: `python tools/generate_audio.py`
-- Re-make MP4: `node tools/build_video.js`  (needs the local server + Chrome debug port running)
-- Update live link: `git add -A && git commit -m "update" && git push`
+First start the helpers: `python -m http.server 8755` (in this folder) and Chrome with `--remote-debugging-port=9222`.
+- **English** audio + video: `python tools/generate_audio.py` then `node tools/build_video.js`
+- **Hindi** audio + video: `python tools/generate_audio_hi.py` then `node tools/build_video.js demo-recorded-hi.html audio-hi pragmatic-hvac-ai-demo-hindi.mp4`
+- Update live links: `git add -A && git commit -m "update" && git push`
+
+To use a **native Hindi voice**, set `MAYA_VOICE_ID_HI` / `CALLER_VOICE_ID_HI` in `.env` and re-run the Hindi commands. (The current Hindi uses the same multilingual voice as English — clear, but lightly accented; a true Hindi library voice will sound more native.)
 
 > 🔐 Your ElevenLabs key lives only in `.env` (git-ignored — **not** published). Since it was shared in chat, consider rotating it in the ElevenLabs dashboard when convenient.
 > 🗑️ To take the public demo down: `gh repo delete ZenV-art/pragmatic-hvac-ai-demo` (or make it private in repo settings).

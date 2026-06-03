@@ -1,0 +1,15 @@
+# secrets — never publish
+.env
+
+# build tooling & artifacts
+tools/
+video/
+__pycache__/
+*.pyc
+
+# local verification screenshots
+*.png
+.playwright-mcp/
+
+# unrelated local folders
+chatbot-demos/
